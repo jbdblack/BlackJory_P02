@@ -29,6 +29,15 @@ public class Level01Controller : MonoBehaviour
     }
     public void ExitLevel()
     {
+        // compare to high score
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        if(_currentScore > highScore)
+        {
+            // save the current score as the new high score
+            PlayerPrefs.SetInt("HighScore", _currentScore);
+            Debug.Log("New high score: " + _currentScore);
+        }
+        // load new level
         SceneManager.LoadScene("MainMenu");
     }
 
