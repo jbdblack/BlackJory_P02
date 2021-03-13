@@ -21,4 +21,12 @@ public class MainMenuController : MonoBehaviour
             AudioManager.Instance.PlaySong(_startingSong);
         }*/
     }
+
+    public void ResetData()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+        Debug.Log("High Score Reset");
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        _highScoreTextView.text = highScore.ToString();
+    }
 }
