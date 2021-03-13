@@ -10,7 +10,9 @@ public class FirstPersonPlayer : MonoBehaviour
     [SerializeField] Text _currentHealthTextView;
 
     public float _playerHealth = 100f;
-
+    
+    //potentially move this functionality out of the player script
+    [SerializeField] GameObject youLoseText;
 
     Rigidbody _rb = null;
 
@@ -41,6 +43,12 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         Debug.Log("Player has been killed!");
         //this.gameObject.SetActive(false);
+        YouLose();
         
+    }
+
+    public void YouLose()
+    {
+        youLoseText.SetActive(true);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Level01Controller : MonoBehaviour
 {
+
     [SerializeField] Text _currentScoreTextView;
     
 
@@ -62,4 +63,5 @@ public class Level01Controller : MonoBehaviour
             SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
     }
+
 }

@@ -690,12 +690,12 @@ GameObject:
   - component: {fileID: 1212714483}
   - component: {fileID: 1212714482}
   m_Layer: 5
-  m_Name: LoseStateMessage
+  m_Name: youLoseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212714481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1279,6 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealthTextView: {fileID: 635845433}
   _playerHealth: 100
+  youLoseText: {fileID: 1212714480}
 --- !u!1 &1812377622
 GameObject:
   m_ObjectHideFlags: 0
