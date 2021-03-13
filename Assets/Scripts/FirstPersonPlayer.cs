@@ -11,11 +11,13 @@ public class FirstPersonPlayer : MonoBehaviour
 
     public float _playerHealth = 100f;
 
+
     Rigidbody _rb = null;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
@@ -38,6 +40,7 @@ public class FirstPersonPlayer : MonoBehaviour
     public void Kill()
     {
         Debug.Log("Player has been killed!");
-            this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        
     }
 }
