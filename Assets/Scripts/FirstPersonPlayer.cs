@@ -10,6 +10,8 @@ public class FirstPersonPlayer : MonoBehaviour
     [SerializeField] Text _currentHealthTextView;
 
     public float _playerHealth = 100f;
+
+    UIManager uiManager;
     
     //potentially move this functionality out of the player script
     [SerializeField] GameObject youLoseText;
@@ -19,6 +21,8 @@ public class FirstPersonPlayer : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        // fill our references
+        uiManager = FindObjectOfType<UIManager>();
         
     }
 
@@ -31,12 +35,20 @@ public class FirstPersonPlayer : MonoBehaviour
     }
 
 
-    public void TakeDamage()
+    public void TakeDamage(int _damageAmount)
     {
-        _playerHealth -= 30f;
+        _playerHealth -= _damageAmount;
         Debug.Log("Player has taken damage!");
+        if(_playerHealth <= 0)
+        {
+            _playerHealth = 0;
+        }
+        // update Health Text
         _currentHealthTextView.text =
             "Health: " + _playerHealth.ToString();
+        // update the Health Slider
+        uiManager.UpdateHealthSlider();
+
     }
 
     public void Kill()

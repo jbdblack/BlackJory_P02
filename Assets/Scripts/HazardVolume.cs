@@ -12,7 +12,7 @@ public class HazardVolume : MonoBehaviour
         if(player != null)
         {
             // do something!
-            player.TakeDamage();
+            player.TakeDamage(30);
         }
     }
 }

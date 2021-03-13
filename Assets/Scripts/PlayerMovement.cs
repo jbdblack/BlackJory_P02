@@ -44,5 +44,17 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        if (Input.GetKeyDown("left shift"))
+        {
+            speed += 20;
+            Debug.Log("Sprinting - Speed Increased");
+        }
+
+        if(Input.GetKeyUp("left shift"))
+        {
+            speed = 12f;
+            Debug.Log("Walking - Speed set to 12");
+        }
+
     }
 }
