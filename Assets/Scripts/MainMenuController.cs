@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] AudioClip _startingSong;
+    //[SerializeField] AudioClip _startingSong;
     [SerializeField] Text _highScoreTextView;
 
     void Start()
@@ -15,10 +15,10 @@ public class MainMenuController : MonoBehaviour
         _highScoreTextView.text = highScore.ToString();
 
 
-        // play starting song on menu start
+        /*// play starting song on menu start
         if(_startingSong != null)
         {
             AudioManager.Instance.PlaySong(_startingSong);
-        }
+        }*/
     }
 }

@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 
     AudioSource _audioSource;
 
+    [SerializeField] AudioClip _startingSong;
+
     private void Awake()
     {
         #region Singleton Pattern (Simple)
@@ -31,5 +33,14 @@ public class AudioManager : MonoBehaviour
     {
         _audioSource.clip = clip;
         _audioSource.Play();
+    }
+
+    void Start()
+    {
+        // play starting song on menu start
+        if (_startingSong != null)
+        {
+            AudioManager.Instance.PlaySong(_startingSong);
+        }
     }
 }
