@@ -10,6 +10,8 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
+
+        Cursor.lockState = CursorLockMode.None;
         // load high score display
         int highScore = PlayerPrefs.GetInt("HighScore");
         _highScoreTextView.text = highScore.ToString();

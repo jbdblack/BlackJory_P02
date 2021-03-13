@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Level01Controller : MonoBehaviour
 {
     [SerializeField] Text _currentScoreTextView;
+    
 
     int _currentScore;
 
@@ -25,6 +26,11 @@ public class Level01Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ExitLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadLevel();
         }
     }
     public void ExitLevel()
@@ -48,5 +54,12 @@ public class Level01Controller : MonoBehaviour
         // update score display, so we can see the new score
         _currentScoreTextView.text =
             "Score: " + _currentScore.ToString();
+    }
+
+    void ReloadLevel()
+    {
+        int activeSceneIndex =
+            SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(activeSceneIndex);
     }
 }
