@@ -8,7 +8,10 @@ public class Level01Controller : MonoBehaviour
 {
 
     [SerializeField] Text _currentScoreTextView;
-    
+    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] Transform spawnPoint;
+
+
 
     int _currentScore;
 
@@ -32,6 +35,11 @@ public class Level01Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
         }
     }
     public void ExitLevel()

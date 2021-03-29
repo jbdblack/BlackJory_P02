@@ -7,14 +7,21 @@ public class EnemyShooter : MonoBehaviour
 {
     public int _enemyHealth = 100;
     public LayerMask aggroLayerMask;
+    [SerializeField] GameObject bullet;
 
     private NavMeshAgent navAgent;
     private Collider[] withinAggroColliders;
     private FirstPersonPlayer player;
 
+    float fireRate;
+    float nextFire;
+
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
+
+        fireRate = 1f;
+        nextFire = Time.time;
     }
 
     void FixedUpdate()
@@ -25,6 +32,13 @@ public class EnemyShooter : MonoBehaviour
             Debug.Log("Found player");
             ChasePlayer(withinAggroColliders[0].GetComponent<FirstPersonPlayer>());
         }
+
+        CheckIfTimeToFire();
+    }
+
+    void Update()
+    {
+        //CheckIfTimeToFire();
     }
 
     public void TakeDamage(int _damageAmount)
@@ -43,5 +57,14 @@ public class EnemyShooter : MonoBehaviour
     {
         this.player = player;
         navAgent.SetDestination(player.transform.position);
+    }
+
+    void CheckIfTimeToFire()
+    {
+        if (Time.time > nextFire)
+        {
+            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            nextFire = Time.time + fireRate;
+        }
     }
 }
