@@ -31,7 +31,6 @@ public class FireWeapon : MonoBehaviour
         {
             Shoot();
             // Play sound effect
-            //source.Play();
             source.PlayOneShot(fireWeapon, 0.7f);
         }
     }

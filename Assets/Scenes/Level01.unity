@@ -2221,7 +2221,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9b9443dcbf8aa4740851f75c5bd74e5b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3306,6 +3306,11 @@ PrefabInstance:
       propertyPath: youLoseText
       value: 
       objectReference: {fileID: 1212714480}
+    - target: {fileID: 8952661413854825061, guid: 1bea45338d60a4743b45e540d4713687,
+        type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9458bdb3c9c1c6942b3b5b7bc42596a0, type: 3}
     - target: {fileID: 8952661414042583611, guid: 1bea45338d60a4743b45e540d4713687,
         type: 3}
       propertyPath: m_Layer

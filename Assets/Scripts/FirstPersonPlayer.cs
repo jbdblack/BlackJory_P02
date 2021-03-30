@@ -8,6 +8,9 @@ public class FirstPersonPlayer : MonoBehaviour
 {
 
     [SerializeField] Text _currentHealthTextView;
+    [SerializeField] AudioClip damageSound;
+
+    private AudioSource source;
 
     public float _playerHealth = 100f;
 
@@ -23,7 +26,8 @@ public class FirstPersonPlayer : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         // fill our references
         uiManager = FindObjectOfType<UIManager>();
-        
+        source = GetComponent<AudioSource>();
+
     }
 
     private void Update()
@@ -39,7 +43,10 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         _playerHealth -= _damageAmount;
         Debug.Log("Player has taken damage!");
-        if(_playerHealth <= 0)
+        // Play sound effect
+        source.PlayOneShot(damageSound, 1f);
+
+        if (_playerHealth <= 0)
         {
             _playerHealth = 0;
         }

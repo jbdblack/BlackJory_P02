@@ -12,28 +12,44 @@ public class EnemyShooter : MonoBehaviour
     private NavMeshAgent navAgent;
     private Collider[] withinAggroColliders;
     private FirstPersonPlayer player;
+    private AudioSource source;
+    [SerializeField] AudioClip fireBullet;
 
-    float fireRate;
+
+    [SerializeField] float fireRate = 2f;
     float nextFire;
+
+    bool _foundPlayer = false;
 
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
 
-        fireRate = 4f;
+        //fireRate = 2f;
         nextFire = Time.time;
+
+        source = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
     {
-        withinAggroColliders = Physics.OverlapSphere(transform.position, 10, aggroLayerMask);
+        withinAggroColliders = Physics.OverlapSphere(transform.position, 20, aggroLayerMask);
         if(withinAggroColliders.Length > 0)
         {
             Debug.Log("Found player");
             ChasePlayer(withinAggroColliders[0].GetComponent<FirstPersonPlayer>());
+            _foundPlayer = true;
+        }
+        else
+        {
+            _foundPlayer = false;
         }
 
-        CheckIfTimeToFire();
+        if (_foundPlayer == true)
+        {
+            CheckIfTimeToFire();
+        }
+        
     }
 
     void Update()
@@ -66,6 +82,8 @@ public class EnemyShooter : MonoBehaviour
         {
             Instantiate(bullet, this.transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
+            // Play sound effect
+            source.PlayOneShot(fireBullet, 1f);
         }
     }
 
