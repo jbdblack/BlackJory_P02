@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     AudioSource _audioSource;
 
     [SerializeField] AudioClip _startingSong;
+    //[SerializeField] AudioClip _fireBlaster;
 
     private void Awake()
     {
@@ -30,6 +31,12 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlaySong(AudioClip clip)
+    {
+        _audioSource.clip = clip;
+        _audioSource.Play();
+    }
+
+    public void PlayEffect(AudioClip clip)
     {
         _audioSource.clip = clip;
         _audioSource.Play();
