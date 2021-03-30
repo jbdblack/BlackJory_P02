@@ -3090,6 +3090,11 @@ PrefabInstance:
       propertyPath: hitLayers.m_Bits
       value: 1025
       objectReference: {fileID: 0}
+    - target: {fileID: 7055158489365431804, guid: 1bea45338d60a4743b45e540d4713687,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8952661412264012943, guid: 1bea45338d60a4743b45e540d4713687,
         type: 3}
       propertyPath: m_Layer

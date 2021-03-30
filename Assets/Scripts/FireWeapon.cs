@@ -8,7 +8,7 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] Transform rayOrigin;
     [SerializeField] float shootDistance = 10f;
     [SerializeField] GameObject visualFeedbackObject; // hitpoint light
-    [SerializeField] int weaponDamage = 20;
+    [SerializeField] int weaponDamage = 50;
     [SerializeField] LayerMask hitLayers;
 
     RaycastHit objectHit;   // store info about our raycast hit
@@ -39,7 +39,7 @@ public class FireWeapon : MonoBehaviour
             {
                 Debug.Log("DEAL DAMAGE");
                 // Visual Feedback
-                visualFeedbackObject.transform.position = objectHit.point;
+                //visualFeedbackObject.transform.position = objectHit.point;
                 // If enemy is hit, apply damage
                 EnemyShooter enemyShooter = objectHit.transform.gameObject.GetComponent<EnemyShooter>();
                 if (enemyShooter != null)

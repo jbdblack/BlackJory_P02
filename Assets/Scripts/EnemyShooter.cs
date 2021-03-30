@@ -20,7 +20,7 @@ public class EnemyShooter : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
 
-        fireRate = 1f;
+        fireRate = 4f;
         nextFire = Time.time;
     }
 
@@ -49,6 +49,7 @@ public class EnemyShooter : MonoBehaviour
         if (_enemyHealth <= 0)
         {
             _enemyHealth = 0;
+            DestroyEnemy();
         }
 
     }
@@ -66,5 +67,10 @@ public class EnemyShooter : MonoBehaviour
             Instantiate(bullet, this.transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
         }
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

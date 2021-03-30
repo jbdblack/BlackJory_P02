@@ -24,13 +24,30 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 6f);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    /*void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name.Equals("FirstPersonPlayer"))
         {
             Debug.Log("Hit!");
+            target.TakeDamage(30);
             Destroy(gameObject);
         }
 
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        FirstPersonPlayer player
+            = other.gameObject.GetComponent<FirstPersonPlayer>();
+        // if we found something valid, continue
+        if (player != null)
+        {
+            // do something!
+            Debug.Log("Hit the player!");
+            player.TakeDamage(30);
+            Destroy(gameObject);
+        }
     }
+
+
 }
