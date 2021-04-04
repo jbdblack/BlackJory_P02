@@ -17,12 +17,7 @@ public class Level01Controller : MonoBehaviour
 
     private void Update()
     {
-        // Increase Score
-        //TODO replace with real implementation later
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            IncreaseScore(5);
-        }
+        
         // Exit Level
         //TODO bring up popup menu for navigation
 

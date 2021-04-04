@@ -115,6 +115,7 @@ MonoBehaviour:
   bullet: {fileID: 2619191276897985650, guid: 314864dd249f31745b9c1b6332a3e171, type: 3}
   fireBullet: {fileID: 8300000, guid: 40dd51a36cf1a4e4b9307835ff164478, type: 3}
   fireRate: 2
+  levelController: {fileID: 0}
 --- !u!195 &5191512737383691988
 NavMeshAgent:
   m_ObjectHideFlags: 0

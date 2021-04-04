@@ -21,6 +21,10 @@ public class EnemyShooter : MonoBehaviour
 
     bool _foundPlayer = false;
 
+    //[SerializeField] GameObject levelController;
+
+    public GameObject levelController;
+
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
@@ -29,6 +33,8 @@ public class EnemyShooter : MonoBehaviour
         nextFire = Time.time;
 
         source = GetComponent<AudioSource>();
+
+        levelController = GameObject.Find("LevelController");
     }
 
     void FixedUpdate()
@@ -90,5 +96,7 @@ public class EnemyShooter : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(gameObject);
+        levelController.GetComponent<Level01Controller>().IncreaseScore(5);
+
     }
 }
