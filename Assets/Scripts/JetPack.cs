@@ -16,7 +16,16 @@ public class JetPack : MonoBehaviour
 
     public float MaxForce = 30;
 
-    
+    // Audio
+    private AudioSource source;
+    [SerializeField] AudioClip jetpackSound;
+
+
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -64,5 +73,16 @@ public class JetPack : MonoBehaviour
 
         //CharCont.Move((currentVector * speed * Time.fixedDeltaTime - CharCont.velocity * Time.fixedDeltaTime) * CurrentForce);
         CharCont.Move((currentVector * speed * Time.deltaTime - CharCont.velocity * Time.deltaTime) * CurrentForce);
+
+        //play audio 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            source.PlayOneShot(jetpackSound, .5f);
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            source.Stop();
+        }
+        
     }
 }
