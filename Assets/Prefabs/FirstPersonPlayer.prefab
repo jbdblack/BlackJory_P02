@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8952661412264012942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8952661412313079377}
   - component: {fileID: 8952661412313079379}
   - component: {fileID: 8952661412313079376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blaster (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8952661412398247889}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 8952661412764063873}
   - component: {fileID: 8952661412764063875}
   - component: {fileID: 8952661412764063872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8952661413061957171}
   - component: {fileID: 8952661413061957173}
   - component: {fileID: 8952661413061957170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blaster (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 8952661413817975135}
   - component: {fileID: 8952661413817975105}
   - component: {fileID: 8952661413817975134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,11 @@ GameObject:
   - component: {fileID: 8952661413854825058}
   - component: {fileID: 8952661413854825061}
   - component: {fileID: 7055158489365431804}
-  m_Layer: 0
+  - component: {fileID: 1654228921}
+  - component: {fileID: 1654228918}
+  - component: {fileID: 1654228919}
+  - component: {fileID: 1654228920}
+  m_Layer: 8
   m_Name: FirstPersonPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +473,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealthTextView: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 9458bdb3c9c1c6942b3b5b7bc42596a0, type: 3}
   _playerHealth: 100
+  jetpack: 0
   youLoseText: {fileID: 0}
 --- !u!114 &7055158489365431804
 MonoBehaviour:
@@ -486,7 +492,158 @@ MonoBehaviour:
   cameraController: {fileID: 8952661414042583613}
   rayOrigin: {fileID: 8952661414042583612}
   shootDistance: 10
-  visualFeedbackObject: {fileID: 0}
+  visualFeedbackObject: {fileID: 8774071816317005137, guid: 19c5ed9c56fe75a45b471a61e75de2c9,
+    type: 3}
+  weaponDamage: 50
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 1025
+  impact: {fileID: 8300000, guid: 32e1dff6575ba1d48a29c7c711b0425c, type: 3}
+  fireWeapon: {fileID: 8300000, guid: 9b9443dcbf8aa4740851f75c5bd74e5b, type: 3}
+--- !u!54 &1654228921
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952661413854825057}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.2
+  m_AngularDrag: 0.2
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &1654228918
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952661413854825057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &1654228919
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952661413854825057}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1654228920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952661413854825057}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c8a3aa0721b9640a98745b40badc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12.08
+  CharCont: {fileID: 8952661413854825056}
+  currentVector: {x: 0, y: 1, z: 0}
+  CurrentForce: 0
+  MaxForce: 60
+  jetpackSound: {fileID: 8300000, guid: 7198279ce78eeff40890d25d86280201, type: 3}
 --- !u!1 &8952661414042583611
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +754,7 @@ GameObject:
   - component: {fileID: 8952661414151298535}
   - component: {fileID: 8952661414151298537}
   - component: {fileID: 8952661414151298534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blaster (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

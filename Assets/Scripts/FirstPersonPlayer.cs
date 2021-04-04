@@ -9,6 +9,7 @@ public class FirstPersonPlayer : MonoBehaviour
 
     [SerializeField] Text _currentHealthTextView;
     [SerializeField] AudioClip damageSound;
+    
 
     private AudioSource source;
 

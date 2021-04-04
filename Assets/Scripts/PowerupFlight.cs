@@ -11,6 +11,9 @@ public class PowerupFlight : MonoBehaviour
     [Header("Setup")]
     [SerializeField] GameObject _visualsToDeactivate = null;
 
+    [Header("Audio")]
+    private AudioSource source;
+    [SerializeField] AudioClip powerupSound;
 
     Collider _colliderToDeactivate = null;
     bool _poweredUp = false;
@@ -21,7 +24,14 @@ public class PowerupFlight : MonoBehaviour
     {
         _colliderToDeactivate = GetComponent<Collider>();
 
+        
+
         EnableObject();
+    }
+
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +43,8 @@ public class PowerupFlight : MonoBehaviour
         {
             // start powerup timer. Restart if it's already started
             StartCoroutine(PowerupSequence(player));
+            // audio
+            source.PlayOneShot(powerupSound, 0.8f);
         }
     }
 

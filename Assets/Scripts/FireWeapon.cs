@@ -7,7 +7,7 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] Camera cameraController;
     [SerializeField] Transform rayOrigin;
     [SerializeField] float shootDistance = 10f;
-    [SerializeField] GameObject visualFeedbackObject; // hitpoint light
+    [SerializeField] ParticleSystem visualFeedbackObject; // hitpoint light
     [SerializeField] int weaponDamage = 50;
     [SerializeField] LayerMask hitLayers;
 
@@ -47,12 +47,15 @@ public class FireWeapon : MonoBehaviour
         {
             // Print name of object that was hit
             Debug.Log("You HIT the " + objectHit.transform.name);
+            ImpactEffect();
 
             if (objectHit.transform.tag == "Enemy")
             {
                 Debug.Log("DEAL DAMAGE");
                 // Visual Feedback
                 //visualFeedbackObject.transform.position = objectHit.point;
+                ImpactEffect();
+                
                 // If enemy is hit, apply damage & play sound effect?
                 EnemyShooter enemyShooter = objectHit.transform.gameObject.GetComponent<EnemyShooter>();
                 if (enemyShooter != null)
@@ -68,5 +71,11 @@ public class FireWeapon : MonoBehaviour
             
         }
         
+    }
+
+    void ImpactEffect()
+    {
+        Instantiate(visualFeedbackObject, objectHit.point, Quaternion.identity);
+        visualFeedbackObject.Play();
     }
 }
