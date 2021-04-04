@@ -14,6 +14,8 @@ public class FirstPersonPlayer : MonoBehaviour
 
     public float _playerHealth = 100f;
 
+    public bool jetpack = false;
+
     UIManager uiManager;
     
     //potentially move this functionality out of the player script
@@ -69,5 +71,15 @@ public class FirstPersonPlayer : MonoBehaviour
     public void YouLose()
     {
         youLoseText.SetActive(true);
+    }
+
+    public void ActivateJetpack()
+    {
+        jetpack = true;
+    }
+
+    public void DeactivateJetpack()
+    {
+        jetpack = false;
     }
 }
