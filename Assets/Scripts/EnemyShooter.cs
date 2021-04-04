@@ -17,6 +17,7 @@ public class EnemyShooter : MonoBehaviour
 
 
     [SerializeField] float fireRate = 2f;
+    [SerializeField] Transform bulletSpawn;
     float nextFire;
 
     bool _foundPlayer = false;
@@ -86,7 +87,7 @@ public class EnemyShooter : MonoBehaviour
     {
         if (Time.time > nextFire)
         {
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
             // Play sound effect
             source.PlayOneShot(fireBullet, 1f);
