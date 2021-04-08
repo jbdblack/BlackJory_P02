@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float moveSpeed = 7f;
+    
+
+    [SerializeField] float minSpeed = 7f;
+    [SerializeField] float maxSpeed = 15f;
+
+    [SerializeField] int minDamage = 5;
+    [SerializeField] int maxDamage = 15;
+
+    
 
     Rigidbody rb;
 
@@ -17,6 +25,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float moveSpeed = Random.Range(minSpeed, maxSpeed);
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindObjectOfType<FirstPersonPlayer>();
         moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
@@ -43,8 +52,9 @@ public class Bullet : MonoBehaviour
         if (player != null)
         {
             // do something!
+            int damageAmount = Random.Range(minDamage, maxDamage);
             Debug.Log("Hit the player!");
-            player.TakeDamage(30);
+            player.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
     }

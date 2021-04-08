@@ -8,19 +8,21 @@ public class Level01Controller : MonoBehaviour
 {
 
     [SerializeField] Text _currentScoreTextView;
+    [Header("Enemy Spawn Settings")]
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] Transform[] spawnPoints;
-
-
+    [SerializeField] float spawnTime = 2f;
+    private float InstantiationTimer = 2f;
 
     int _currentScore;
 
     private void Update()
     {
-        
+
         // Exit Level
         //TODO bring up popup menu for navigation
 
+        SpawnEnemyRandomLocation();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -35,7 +37,7 @@ public class Level01Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
-            SpawnEnemyRandomLocation();
+            //SpawnEnemyRandomLocation();
         }
     }
     public void ExitLevel()
@@ -70,10 +72,17 @@ public class Level01Controller : MonoBehaviour
 
     void SpawnEnemyRandomLocation()
     {
-        //choose a random spawn index from our spawn location array
-        int newSpawnIndex = Random.Range(0, spawnPoints.Length);
-        //create a new object at the randomly selected spawn position and rotation
-        Instantiate(objectToSpawn, spawnPoints[newSpawnIndex].position, spawnPoints[newSpawnIndex].rotation);
+        //Time intervals
+        InstantiationTimer -= Time.deltaTime;
+        if(InstantiationTimer <= 0)
+        {
+            //choose a random spawn index from our spawn location array
+            int newSpawnIndex = Random.Range(0, spawnPoints.Length);
+            //create a new object at the randomly selected spawn position and rotation
+            Instantiate(objectToSpawn, spawnPoints[newSpawnIndex].position, spawnPoints[newSpawnIndex].rotation);
+            InstantiationTimer = spawnTime;
+        }
+      
     }
 
 }
