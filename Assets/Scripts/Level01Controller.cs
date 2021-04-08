@@ -9,7 +9,7 @@ public class Level01Controller : MonoBehaviour
 
     [SerializeField] Text _currentScoreTextView;
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform[] spawnPoints;
 
 
 
@@ -34,7 +34,8 @@ public class Level01Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+            //Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+            SpawnEnemyRandomLocation();
         }
     }
     public void ExitLevel()
@@ -65,6 +66,14 @@ public class Level01Controller : MonoBehaviour
         int activeSceneIndex =
             SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
+    }
+
+    void SpawnEnemyRandomLocation()
+    {
+        //choose a random spawn index from our spawn location array
+        int newSpawnIndex = Random.Range(0, spawnPoints.Length);
+        //create a new object at the randomly selected spawn position and rotation
+        Instantiate(objectToSpawn, spawnPoints[newSpawnIndex].position, spawnPoints[newSpawnIndex].rotation);
     }
 
 }

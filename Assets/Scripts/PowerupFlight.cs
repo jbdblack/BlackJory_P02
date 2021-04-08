@@ -6,7 +6,7 @@ public class PowerupFlight : MonoBehaviour
 {
     [Header("Powerup Settings")]
     [SerializeField] float _speedIncreaseAmount = 20;
-    [SerializeField] float _powerupDuration = 5;
+    [SerializeField] float _powerupDuration = 20;
 
     [Header("Setup")]
     [SerializeField] GameObject _visualsToDeactivate = null;

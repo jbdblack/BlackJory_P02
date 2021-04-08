@@ -8,7 +8,11 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] Transform rayOrigin;
     [SerializeField] float shootDistance = 10f;
     [SerializeField] ParticleSystem visualFeedbackObject; // hitpoint light
-    [SerializeField] int weaponDamage = 50;
+    //[SerializeField] int weaponDamage = 50;
+
+    [SerializeField] int minDamage = 20;
+    [SerializeField] int maxDamage = 50;
+
     [SerializeField] LayerMask hitLayers;
 
     [SerializeField] AudioClip impact;
@@ -60,6 +64,7 @@ public class FireWeapon : MonoBehaviour
                 EnemyShooter enemyShooter = objectHit.transform.gameObject.GetComponent<EnemyShooter>();
                 if (enemyShooter != null)
                 {
+                    int weaponDamage = Random.Range(minDamage, maxDamage + 1);
                     enemyShooter.TakeDamage(weaponDamage);
                     source.PlayOneShot(impact, 1f);
                 }
